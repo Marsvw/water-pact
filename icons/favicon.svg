@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0F2B3A"/>
+  <g transform="translate(256 256) scale(0.92) translate(-256 -256)">
+    <clipPath id="glass"><path d="M146 96 L176 388 Q180 424 216 424 L296 424 Q332 424 336 388 L366 96 Z"/></clipPath>
+    <g clip-path="url(#glass)">
+      <path d="M96 236 Q141 216 186 236 T276 236 T366 236 T456 236 V440 H96 Z" fill="#8ED2EA"/>
+      <path d="M56 250 Q101 230 146 250 T236 250 T326 250 T416 250 V440 H56 Z" fill="#3AAFD9"/>
+    </g>
+    <path d="M154 176 H358" stroke="#F2C640" stroke-width="12" stroke-dasharray="26 18" stroke-linecap="round"/>
+    <path d="M146 96 L176 388 Q180 424 216 424 L296 424 Q332 424 336 388 L366 96" fill="none" stroke="#F8FBFA" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

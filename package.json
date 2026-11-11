@@ -1,0 +1,16 @@
+{
+  "name": "water-pact",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Installable water tracker for two friends who keep each other accountable.",
+  "scripts": {
+    "dev": "node dev/server.mjs",
+    "test": "node --test --experimental-test-coverage --test-coverage-include='js/logic.js' --test-coverage-include='js/model.js' --test-coverage-include='js/api.js' --test-coverage-include='js/store.js' --test-coverage-include='js/sync.js' tests/*.test.mjs",
+    "icons": "node scripts/make-icons.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}
