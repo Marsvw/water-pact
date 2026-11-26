@@ -57,6 +57,9 @@ npm run icons   # regenerate the icon PNGs
   code; writing needs the device key issued on joining, stored only as a hash.
 - `js/logic.js` and `js/model.js` are pure: units, time zones, pace, streaks and
   the view model. `js/api.js` talks to Supabase and validates every answer.
+- `js/goal.js` powers "Work out my goal": about 35 ml per kg of body weight plus
+  roughly a litre per hour of weekly exercise, spread over the week. The weight
+  typed in is used for the sum only and never saved or sent.
 - `js/sync.js` queues changes made offline and sends them when the connection
   returns. Drinks carry a phone-generated id, so a retry never double-logs.
 - `sw.js` caches the app's own files so it opens without a connection.

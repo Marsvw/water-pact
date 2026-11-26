@@ -2,7 +2,7 @@
 import { test, before } from "node:test";
 import assert from "node:assert/strict";
 import { createApi } from "../js/api.js";
-import { deviceTimeZone } from "../js/logic.js";
+import { deviceTimeZone, zonedNow } from "../js/logic.js";
 import { createStore, sanitizeSaved } from "../js/store.js";
 import { createSync, refusalText } from "../js/sync.js";
 import { createDatabase, databaseFetch, rpc } from "../dev/pg.mjs";
@@ -121,7 +121,8 @@ test("a change the server refuses is dropped with a message and never shown as s
 
 test("the daily cap is enforced before queueing", async () => {
   const dev = await joinedDevice();
-  const day = new Date().toISOString().slice(0, 10);
+  // "Today" as the app sees it, in this device's time zone; UTC's date differs around midnight.
+  const day = zonedNow(new Date(), deviceTimeZone()).key;
   const entries = Array.from({ length: 60 }, (_, i) => ({ id: `e${i}`, member_id: dev.identity.memberId, ml: 10, goal_ml: 2000, at: new Date().toISOString(), day }));
   dev.store.set({ pact: { ...dev.store.get().pact, entries } });
   assert.equal(dev.sync.logDrink(250), false);

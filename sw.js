@@ -4,7 +4,7 @@
 //
 // Releasing a new version: change VERSION. Phones notice this file changed, download
 // the whole new set, and switch to it in one step the next time the app opens.
-const VERSION = "2.0.1";
+const VERSION = "2.1.0";
 const SHELL_CACHE = `water-pact-shell-${VERSION}`;
 const FONT_CACHE = "water-pact-fonts-1";
 const SHELL = [
@@ -15,11 +15,13 @@ const SHELL = [
   "manifest.webmanifest",
   "js/main.js",
   "js/api.js",
+  "js/goal.js",
   "js/logic.js",
   "js/model.js",
   "js/store.js",
   "js/sync.js",
   "js/ui/dom.js",
+  "js/ui/goal-helper.js",
   "js/ui/history.js",
   "js/ui/home.js",
   "js/ui/install.js",

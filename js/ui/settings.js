@@ -2,8 +2,9 @@
 import { LIMITS, cleanName, fmtNumber, formatCode } from "../logic.js";
 import { refusalText } from "../sync.js";
 import { field, fmtTime, h, openSheet, readAmount, setAmount, shareLink, switchAmountUnit, toast } from "./dom.js";
+import { goalHelper } from "./goal-helper.js";
 
-const APP_VERSION = "2.0.1";
+const APP_VERSION = "2.1.0";
 
 /**
  * @param {{ api: object, store: object, sync: object, inviteUrl: (code: string) => string }} ctx
@@ -27,6 +28,10 @@ export function openSettings(ctx) {
   const error = h("p", { class: "error", role: "alert", hidden: true });
   const save = h("button", { type: "submit", class: "solid-btn", text: "Save" });
   const fail = (message) => { error.textContent = message; error.hidden = false; };
+  const helper = goalHelper({
+    unit: state.unit,
+    onUse: (ml) => { setAmount(goal.input, ml, store.get().unit); goal.input.focus(); },
+  });
 
   const unitButtons = ["ml", "oz"].map((u) => h("button", {
     type: "button", text: u, "aria-pressed": String(state.unit === u),
@@ -38,6 +43,7 @@ export function openSettings(ctx) {
         switchAmountUnit(f.input, from, u);
         f.suffix.textContent = u;
       });
+      helper.switchUnit(from, u);
       unitButtons.forEach((b) => b.setAttribute("aria-pressed", String(b.textContent === u)));
       store.set({ unit: u });
     },
@@ -71,6 +77,7 @@ export function openSettings(ctx) {
   },
   name.wrap,
   h("div", { class: "goal-row" }, goal.wrap, h("div", { class: "units", role: "group", "aria-label": "Units" }, unitButtons)),
+  helper.root,
   bottle.wrap,
   error,
   save);

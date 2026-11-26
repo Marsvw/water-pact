@@ -5,6 +5,7 @@ import {
 } from "../logic.js";
 import { refusalText } from "../sync.js";
 import { field, h, readAmount, setAmount, switchAmountUnit } from "./dom.js";
+import { goalHelper } from "./goal-helper.js";
 import { brandMark, installSteps } from "./install.js";
 
 const DEFAULT_GOAL_ML = Object.freeze({ ml: 2000, oz: Math.round(64 * ML_PER_OZ) });
@@ -58,9 +59,14 @@ export function createOnboarding(root, ctx) {
     setAmount(goal.input, DEFAULT_GOAL_ML[unit], unit);
     const error = h("p", { class: "error", role: "alert", hidden: true });
     const submit = h("button", { type: "submit", class: "solid-btn", text: submitLabel });
+    const helper = goalHelper({
+      unit,
+      onUse: (ml) => { setAmount(goal.input, ml, store.get().unit); goal.input.focus(); },
+    });
     const toggle = unitToggle((from, to) => {
       switchAmountUnit(goal.input, from, to);
       goal.suffix.textContent = to;
+      helper.switchUnit(from, to);
     });
     const fail = (message) => { error.textContent = message; error.hidden = false; };
 
@@ -84,6 +90,7 @@ export function createOnboarding(root, ctx) {
     },
     name.wrap,
     h("div", { class: "goal-row" }, goal.wrap, toggle),
+    helper.root,
     error,
     submit);
   }

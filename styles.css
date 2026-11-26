@@ -321,6 +321,30 @@ h3 { font-size: 16px; font-weight: 700; }
 .have-code summary { font-weight: 600; cursor: pointer; padding: 4px 0; }
 .have-code form { margin-top: 12px; }
 
+/* "Work out my goal" fold-out under the goal field */
+.goal-help summary {
+  cursor: pointer;
+  padding: 2px 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.goal-help-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.goal-help-body .input-wrap { background: var(--bg); }
+.goal-help-result { font-weight: 600; }
+.goal-help-body .ghost-btn { align-self: flex-start; }
+
 /* ---------- tanks ---------- */
 .tanks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .tank {
