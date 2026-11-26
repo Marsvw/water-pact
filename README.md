@@ -67,6 +67,9 @@ npm run icons   # regenerate the icon PNGs
 ## Known limits
 
 - No push notifications yet: a nudge shows the next time the friend opens the app.
+- On Supabase's free plan, a project with too little activity for a week is
+  paused and the app stops syncing. Nothing is lost: press **Restore** on the
+  project in the Supabase dashboard. Daily use keeps it awake.
 - Anyone holding the invite code can read the pact's water log, so share the
   link only with the people you want in it.
 - There are no accounts and no rate limiting, so the database protects itself

@@ -279,8 +279,9 @@ begin
 end;
 $$;
 
--- wp_peek_pact and wp_get_pact are deliberately not marked STABLE: the API then accepts
--- them by POST only, which keeps invite codes out of URLs and server logs.
+-- The app calls wp_peek_pact and wp_get_pact by POST, which keeps invite codes out of URLs
+-- and server logs. Supabase's API also answers GET for these two read-only functions; any
+-- function that writes fails over GET because GET runs in a read-only transaction.
 create or replace function public.wp_peek_pact(p_code text)
 returns jsonb
 language plpgsql

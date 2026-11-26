@@ -3,7 +3,7 @@ import { LIMITS, cleanName, fmtNumber, formatCode } from "../logic.js";
 import { refusalText } from "../sync.js";
 import { field, fmtTime, h, openSheet, readAmount, setAmount, shareLink, switchAmountUnit, toast } from "./dom.js";
 
-const APP_VERSION = "2.0.0";
+const APP_VERSION = "2.0.1";
 
 /**
  * @param {{ api: object, store: object, sync: object, inviteUrl: (code: string) => string }} ctx

@@ -4,7 +4,7 @@
 //
 // Releasing a new version: change VERSION. Phones notice this file changed, download
 // the whole new set, and switch to it in one step the next time the app opens.
-const VERSION = "2.0.0";
+const VERSION = "2.0.1";
 const SHELL_CACHE = `water-pact-shell-${VERSION}`;
 const FONT_CACHE = "water-pact-fonts-1";
 const SHELL = [
